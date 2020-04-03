@@ -12,7 +12,6 @@ while(check){
     } else {
         arr.push(Number(digit));
     }
-
 }
 
 for(var i = 0; i < arr.length; i++){
