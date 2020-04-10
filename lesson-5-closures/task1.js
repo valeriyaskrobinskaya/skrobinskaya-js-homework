@@ -18,7 +18,10 @@ var tipsJohn = {
     }
 };
 
-console.log('John family bills: ' + tipsJohn.bills + ' ' + 'John family final paid: ' + tipsJohn.finalPaid);
+tipsJohn.calcTip();
+
+console.log('John and his family bills: ' + tipsJohn.bills + ' ' + 'John and his family final paid: ' + tipsJohn.finalPaid);
+
 
 var tipsMark = {
     bills: [77, 375, 110, 45],
@@ -40,4 +43,26 @@ var tipsMark = {
     }
 };
 
-console.log('Mark family bills: ' + tipsMark.bills + ' ' + 'Mark family final paid: ' + tipsMark.finalPaid);
+tipsMark.calcTip();
+
+console.log('Mark and his family bills: ' + tipsMark.bills + ' ' + 'Mark and his family final paid: ' + tipsMark.finalPaid);
+
+
+function averageTips (tips) {
+    var sum = 0;
+    for (var i = 0; i < tips.length; i++) {
+        sum+= tips[i];
+    }
+    return sum / tips.length;
+}
+
+console.log('Mark and his family paid an average tip of ' + averageTips(tipsMark.tips));
+console.log('John and his family paid an average tip of ' + averageTips(tipsJohn.tips));
+
+if (averageTips(tipsMark.tips) > averageTips(tipsJohn.tips)) {
+    console.log('Mark and his family paid the highest tips on average');
+} else if (averageTips(tipsMark.tips) < averageTips(tipsJohn.tips)) {
+    console.log('John and his family paid the highest tips on average');
+} else {
+    console.log('John and Mark paid the same tips average');
+}
