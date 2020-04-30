@@ -1,20 +1,20 @@
-class THashStorage {
-    constructor() {
-        this.store = {};
-    }
-    addValue(key, value) {
-        this.store[key] = value;
-    }
-    getValue(key) {
-        return this.store[key];
-    }
-    deleteValue(key) {
-        if (!(key in this.store)) {
-            return false
-        }
-        return delete this.store[key];
-    }
-    getKeys() {
-        return Object.keys(this.store);
-    }
+function THashStorage() {
+    var self = this,
+        pHash = {};
+
+    self.addValue = function(key, value) {
+        pHash[key] = value;
+    };
+
+    self.getValue = function(key) {
+        return pHash[key];
+    };
+
+    self.deleteValue = function(key) {
+        return delete pHash[key];
+    };
+
+    self.getKeys = function() {
+        return (Object.keys(pHash));
+    };
 }
