@@ -7,11 +7,40 @@
 <body>
   <script src="HashStorage.js"></script>
   <script>
-     const coctailsStorage = new THashStorage();
+
+     const DrinkStorage = new THashStorage();
+
+
+     const addButton = document.getElementById('add-cocktail');
+     addButton.onclick = function () {
+         const cocktail = {};
+         const name = window.prompt('Введите название коктеля');
+         const isAlcohol = window.prompt('Напиток алкогольный?');
+
+         DrinkStorage.addValue(name, {name, isAlcohol});
+     };
+
+     const deleteButton = document.getElementById('delete-cocktail');
+     deleteButton.onclick = function () {
+         DrinkStorage.deleteValue(name);
+     };
+
+     const getButton = document.getElementById('get-cocktail');
+     getButton.onclick = function () {
+         DrinkStorage.getValue();
+     };
+
+     const showButton = document.getElementById('all-cocktails');
+     showButton.onclick = function () {
+         DrinkStorage.getKeys()
+     }
+
   </script>
-  <button id='add-coctail'>ввод информации о напитке</button>
-  <button id='delete-coctail'>получение информации о напитке</button>
-  <button id='get-coctail'>удаление информации о напитке</button>
-  <button id='all-coctails'>перечень всех напитков</button>
+
+  <div></div>
+  <button id='add-cocktail'>ввод информации о напитке</button>
+  <button id='delete-cocktail'>удаление информации о напитке</button>
+  <button id='get-cocktail'>получение информации о напитке</button>
+  <button id='all-cocktails'>перечень всех напитков</button>
 </body>
 </html>
