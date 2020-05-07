@@ -1,0 +1,32 @@
+img:hover {
+    cursor: move;
+}
+
+.images {
+    width: 250px;
+    height: 250px;
+}
+
+#img1 {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+}
+
+#img2 {
+    position: fixed;
+    top: 20px;
+    left: 270px;
+}
+
+#img3 {
+    position: fixed;
+    top: 20px;
+    left: 530px;
+}
+
+#img4 {
+    position: fixed;
+    top: 20px;
+    left: 790px;
+}
