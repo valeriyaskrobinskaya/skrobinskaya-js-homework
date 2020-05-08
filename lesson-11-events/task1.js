@@ -1,3 +1,4 @@
+
 window.onload = start;
 function start() {
     var counter = 0;
@@ -56,7 +57,7 @@ function start() {
         }
     }
 
-    function getCoords(elem) { // кроме IE8-
+    function getCoords(elem) {
         var box = elem.getBoundingClientRect();
 
         return {
@@ -71,3 +72,4 @@ function start() {
         return {x:EO.pageX - docPos.left, y:EO.pageY - docPos.top};
     }
 }
+
