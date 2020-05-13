@@ -1,0 +1,48 @@
+#clock_dom {
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+    background-color: sandybrown;
+}
+
+.childElem {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: mediumseagreen;
+    position: absolute;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+.childElemWatch {
+    width: 120px;
+    height: 30px;
+    position: absolute;;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+.elemHours {
+    width: 9px;
+    height: 60px;
+}
+
+.elemMinutes {
+    width: 5px;
+    height: 60px;
+}
+
+.elemSeconds {
+    width: 2px;
+    height: 145px;
+}
+
+.elemHours , .elemMinutes , .elemSeconds {
+    border-radius: 10px;
+    position: absolute;
+    background-color: black;
+}
