@@ -79,7 +79,7 @@ ballH = {
     speedX: 0,
     speedY: 0,
     width: 30,
-    height: 30
+    height: 30,
 
     update: function () {
         var ballObj = ball;
@@ -116,4 +116,16 @@ window.addEventListener("keydown", function(EO) {
         racquetH.racquet2Speed = -5;
     }
 });
+
+// функция для того чтобы табло выводило очки игроков
+function scoreBoardInnerHtml() {
+    scoreBoard.innerHTML = score1 + " : " + score2;
+}
+
+//функция для запуска игры
+function  start() {
+    ballH.speedX = 8;
+    ballH.speedY = 3;
+}
+start();
 
