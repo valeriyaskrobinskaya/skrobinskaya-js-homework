@@ -70,4 +70,28 @@ racquetAreaH = {
 racquetAreaH.update();
 
 // работа с мячом
+ball.classList.add("ball"); // присваиваем готовый CSS для мяча
+ball = wrap.appendChild(ball); // делаем мяч дочерним элементом wrap
+
+ballH = {
+    posX: wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width/2 - ball.getBoundingClientRect().width/2,
+    posY: wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - ball.getBoundingClientRect().height/2,
+    speedX: 0,
+    speedY: 0,
+    width: 30,
+    height: 30
+
+    update: function () {
+        var ballObj = ball;
+        ballObj.style.left = this.posX + "px";
+        ballObj.style.top = this.posY + "px";
+    }
+};
+
+areaH = {
+    width: wrap.getBoundingClientRect().width,
+    height: wrap.getBoundingClientRect().height
+};
+
+ballH.update();
 
