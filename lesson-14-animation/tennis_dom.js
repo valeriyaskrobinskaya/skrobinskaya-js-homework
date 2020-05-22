@@ -15,3 +15,4 @@ var areaH; //создаём переменную areaH для дальнейше
 var settimeout; //создаём переменную settimeout для дальнейшей работы с таймером
 var messageGoal = document.createElement("div"); //сoздаём div для текста которая будет отображаться когда будет гол
 var messageGoalText = "Гол!";
+
