@@ -95,3 +95,25 @@ areaH = {
 
 ballH.update();
 
+// В обработчик keydown/keyup вызываем preventDefault
+window.addEventListener("keydown", function(EO) {
+    EO = EO || window.event;
+    EO.preventDefault();
+
+    if (EO.keyCode === 17) {
+        racquetH.racquet1Speed = 5;
+    }
+
+    if (EO.keyCode === 16) {
+        racquetH.racquet1Speed = -5;
+    }
+
+    if (EO.keyCode === 40) {
+        racquetH.racquet2Speed = 5;
+    }
+
+    if (EO.keyCode === 38) {
+        racquetH.racquet2Speed = -5;
+    }
+});
+
