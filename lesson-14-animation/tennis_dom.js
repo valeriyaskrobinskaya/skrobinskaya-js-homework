@@ -1,65 +1,79 @@
-var wrap = document.getElementById('wrapper');
-var widthOfWrap = "700px"; //ширина wrap
-var heightOfWrap = "400px"; //высота wrap
-var buttonStart = document.createElement("input"); //создаём input для кнопки СТАРТ
-var scoreBoard = document.createElement("div"); //сoздаём div для табло
-var score1 = 0; //очки первого игрока
-var score2 = 0; //очки второго игрока
-var racquet1 = document.createElement("div"); //создаём div для первой(левой) ракетки
-var racquet2 = document.createElement("div"); //создаём div для второй(правой) ракетки
-var racquetH; //создаём переменную racquetH для дальнейшей работы с ракетками
-var racquetAreaH; //создаём переменную racquetAreaH для дальнейшей работы с ракетками
-var ball = document.createElement("div"); //создаём div для мяча
-var ballH; //создаём переменную ballH для дальнейшей работы с мячом
-var areaH; //создаём переменную areaH для дальнейшей работы с мячом
-var settimeout; //создаём переменную settimeout для дальнейшей работы с таймером
-var messageGoal = document.createElement("div"); //сoздаём div для текста который будет отображаться когда будет гол
-var messageGoalText = "Гол!";
+var wrap = document.getElementById('wrapper'),
+    widthOfWrap = "700px", //ширина wrap
+    heightOfWrap = "400px", //высота wrap
+    // работаем с кнопкой старт
+    buttonStart = document.createElement("input"), //создаём input для кнопки СТАРТ
+    // работаем с табло(счет)
+    scoreBoard = document.createElement("div"), //сoздаём div для табло
+    score1 = 0, //очки первого игрока
+    score2 = 0, //очки второго игрока
+    // работаем с ракетками
+    racquet1 = document.createElement("div"), //создаём div для первой(левой) ракетки
+    racquet2 = document.createElement("div"), //создаём div для второй(правой) ракетки
+    racquetH, //создаём переменную racquetH для дальнейшей работы с ракетками
+    racquetAreaH, //создаём переменную racquetAreaH для дальнейшей работы с ракетками
+    // работаем с мячом
+    ball = document.createElement("div"), //создаём div для мяча
+    ballH, //создаём переменную ballH для дальнейшей работы с мячом
+    areaH, //создаём переменную areaH для дальнейшей работы с мячом
+    // работаем с таймером
+    settimeout, //создаём переменную settimeout для дальнейшей работы с таймером
 
+    messageGoal = document.createElement("div"), //сoздаём div для текста которая будет отображаться когда будет гол
+    messageGoalText = "Гол!";
+
+// работаем с сообщением
 messageGoal.classList.add("messageGoal");
-messageGoal = wrap.appendChild(messageGoal); // работа с сообщением
+messageGoal = wrap.appendChild(messageGoal);
 
+// работаем с wrap задаём размеры
 wrap.style.width = widthOfWrap;
-wrap.style.height = heightOfWrap; // задаём размеры для wrap
+wrap.style.height = heightOfWrap;
 
-requestAnimationFrame('tick'); // таймер
+// работаем с таймером
+requestAnimationFrame(tick);
 
-buttonStart.type = "button"; // работа с кнопкой. Задаём тип
-buttonStart.value = "Старт!"; // текст, который будет отображаться на кнопке
-buttonStart.classList.add("buttonStart"); // присваиваем готовый CSS
-buttonStart = document.body.insertBefore(buttonStart, document.body.children[0]); // делаем кнопку дочерним элементом body
-buttonStart.onclick = start; // на событие onclick вешаем цункцию start
+// работаем с кнопкой старт
+buttonStart.type = "button"; //задаём тип(кнопка)
+buttonStart.value = "старт!"; //задаем значение(то что будет отображаться на кнопке)
+buttonStart.classList.add('buttonStart');//устанавливаем готовый CSS класс
+buttonStart = document.body.insertBefore(buttonStart, document.body.children[0]); //созданную кнопку делаем дочерним элементом body
+buttonStart.onclick = start; //на события onclick ставим функцию start(при клике на кнопку запускаем функцию)
 
-scoreBoard.classList.add("scoreBoard"); // работаем с таблом. Присваиваем готовый CSS.
-scoreBoardInnerHtml(); // вызываем функцию для вывода на табло счёта
-scoreBoard = document.body.insertBefore(scoreBoard, document.body.children[0]); // делаем дочерним элементом body
-// работа с ракетками
-racquet1.classList.add("racquet1"); // присваиваем готовый CSS для первой ракетки
-racquet2.classList.add("racquet2"); // присваиваем готовый CSS для второй ракетки
-racquet1 = wrap.appendChild(racquet1); //первую(левую) ракетку делаем дочерним элементом wrap
-racquet2 = wrap.appendChild(racquet2); //вторую(правую) ракетку делаем дочерним элементом wrap
+// работаем с табло(счет)
+scoreBoard.classList.add('scoreBoard');//устанавливаем готовый CSS класс
+scoreBoardInnerHTML(); //вызываем функцию чтоб на табло вывести очки(score1 и score2) игроков
+scoreBoard = document.body.insertBefore(scoreBoard, document.body.children[1]); //созданный табло делаем дочерним элементом body
+
+// работаем с ракетками
+racquet1.classList.add('racquet1');//устанавливаем готовый CSS класс
+racquet2.classList.add('racquet2');//устанавливаем готовый CSS класс
+
+racquet1 = wrap.appendChild(racquet1); //созданную первую(левую) ракетку делаем дочерним элементом wrap
+racquet2 = wrap.appendChild(racquet2); //созданную вторую(правую) ракетку делаем дочерним элементом wrap
 
 racquetH = {
+    // первая(левая) ракетка
     racquet1PosX: wrap.getBoundingClientRect().left,
     racquet1PosY: wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - racquet1.getBoundingClientRect().height/2,
     racquet1Speed: 0,
-
+    // вторая(правая) ракетка
     racquet2PosX: wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - racquet2.getBoundingClientRect().width,
     racquet2PosY: wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - racquet1.getBoundingClientRect().height/2,
     racquet2Speed: 0,
     width: 10,
     height: 120,
 
-    update: function () {
-        var racquet1Obj = racquet1;
-        var racquet2Obj = racquet2;
+    update: function() {
+        var racquet1Obj = racquet1,
+            racquet2Obj = racquet2;
+
         racquet1Obj.style.left = this.racquet1PosX + "px";
         racquet1Obj.style.top = this.racquet1PosY + "px";
+
         racquet2Obj.style.left = this.racquet2PosX + "px";
         racquet2Obj.style.top = this.racquet2PosY + "px";
-
     }
-
 };
 
 racquetAreaH = {
@@ -67,11 +81,11 @@ racquetAreaH = {
     height: wrap.getBoundingClientRect().height
 };
 
-racquetAreaH.update();
+racquetH.update();
 
-// работа с мячом
-ball.classList.add("ball"); // присваиваем готовый CSS для мяча
-ball = wrap.appendChild(ball); // делаем мяч дочерним элементом wrap
+// работаем с мячом
+ball.classList.add('ball'); //устанавливаем готовый CSS класс
+ball = wrap.appendChild(ball); //созданный мячик делаем дочерним элементом wrap
 
 ballH = {
     posX: wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width/2 - ball.getBoundingClientRect().width/2,
@@ -81,7 +95,7 @@ ballH = {
     width: 30,
     height: 30,
 
-    update: function () {
+    update: function() {
         var ballObj = ball;
         ballObj.style.left = this.posX + "px";
         ballObj.style.top = this.posY + "px";
@@ -95,7 +109,7 @@ areaH = {
 
 ballH.update();
 
-// В обработчик keydown/keyup вызываем preventDefault
+// 1. Надо в обработчике keydown/keyup вызывать preventDefault.
 window.addEventListener("keydown", function(EO) {
     EO = EO || window.event;
     EO.preventDefault();
@@ -117,15 +131,127 @@ window.addEventListener("keydown", function(EO) {
     }
 });
 
-// функция для того чтобы табло выводило очки игроков
-function scoreBoardInnerHtml() {
-    scoreBoard.innerHTML = score1 + " : " + score2;
+window.addEventListener("keyup", function(EO) {
+    EO = EO || window.event;
+    EO.preventDefault();
+
+    if (EO.keyCode === 17) {
+        racquetH.racquet1Speed = 0;
+    }
+
+    if (EO.keyCode === 16) {
+        racquetH.racquet1Speed = 0;
+    }
+
+    if (EO.keyCode === 40) {
+        racquetH.racquet2Speed = 0;
+    }
+
+    if (EO.keyCode === 38) {
+        racquetH.racquet2Speed = 0;
+    }
+});
+
+//ф-ция для того чтоб на табло выводили очки(score1 и score2) игроков
+function scoreBoardInnerHTML() {
+    scoreBoard.innerHTML = score1 + ":" + score2;
 }
 
-//функция для запуска игры
-function  start() {
-    ballH.speedX = 8;
-    ballH.speedY = 3;
+//ф-ция для того чтоб запустить игру
+function start() {
+    ballH.speedX = 8;//4
+    ballH.speedY = 3;//2
 }
-start();
+
+//ф-ция для того чтоб мяч двигался, не выходило из рамки и т.д.
+function tick() {
+    // работаем с ракетками
+    racquetH.update();
+    racquetH.racquet1PosY += racquetH.racquet1Speed;
+    // вылетела ли ракетка ниже пола?
+    if (racquetH.racquet1PosY + racquetH.height > (wrap.getBoundingClientRect().top + racquetAreaH.height)) {
+        racquetH.racquet1PosY = wrap.getBoundingClientRect().top + racquetAreaH.height - racquetH.height;
+    }
+
+    // вылетела ли ракетка выше потолка?
+    if (racquetH.racquet1PosY < wrap.getBoundingClientRect().top) {
+        racquetH.racquet1PosY = wrap.getBoundingClientRect().top;
+    }
+
+    racquetH.racquet2PosY += racquetH.racquet2Speed;
+    // вылетела ли ракетка ниже пола?
+    if (racquetH.racquet2PosY + racquetH.height > (wrap.getBoundingClientRect().top + racquetAreaH.height)) {
+        racquetH.racquet2PosY = wrap.getBoundingClientRect().top + racquetAreaH.height - racquetH.height;
+    }
+
+    // вылетела ли ракетка выше потолка?
+    if (racquetH.racquet2PosY < wrap.getBoundingClientRect().top) {
+        racquetH.racquet2PosY = wrap.getBoundingClientRect().top;
+    }
+
+    // работаем с мячом
+    ballH.posX -= ballH.speedX;
+    // вылетел ли мяч правее стены?
+    if ((ballH.posY + ballH.height < racquetH.racquet2PosY || ballH.posY > (racquetH.racquet2PosY + racquetH.height)) && ballH.posX+ballH.width >= (wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width)) {
+
+        score1 += 1;
+        scoreBoardInnerHTML();
+        ballH.speedX = 0;
+        ballH.speedY = 0;
+        messageGoal.innerHTML = messageGoalText;
+
+        ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1;
+
+        settimeout = window.setTimeout(function () {
+            messageGoal.innerHTML = "";
+            ballH.posX = wrap.getBoundingClientRect().left + racquetH.width;
+            ballH.posY = racquetH.racquet1PosY + racquetH.height/2;
+            start();
+        }, 2000);
+
+    } else if (!(ballH.posY + ballH.height < racquetH.racquet2PosY || ballH.posY > (racquetH.racquet2PosY + racquetH.height)) && ballH.posX+ballH.width > (racquetH.racquet2PosX)) {
+        ballH.speedX =- ballH.speedX;
+        ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - racquetH.width - ballH.width;
+    }
+
+    // вылетел ли мяч левее стены
+    if ((ballH.posY + ballH.height < racquetH.racquet1PosY || ballH.posY > (racquetH.racquet1PosY + racquetH.height)) && ballH.posX <= (wrap.getBoundingClientRect().left)) {
+
+        score2 += 1;
+        scoreBoardInnerHTML();
+        ballH.speedX = 0;
+        ballH.speedY = 0;
+        messageGoal.innerHTML = messageGoalText;
+
+        ballH.posX = wrap.getBoundingClientRect().left + 1;
+
+        settimeout = window.setTimeout(function () {
+            messageGoal.innerHTML = "";
+            ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - racquetH.width;
+            ballH.posY = racquetH.racquet2PosY + racquetH.height/2;
+            start();
+        }, 2000);
+
+    } else if (!(ballH.posY + ballH.height < racquetH.racquet1PosY || ballH.posY > (racquetH.racquet1PosY + racquetH.height)) && ballH.posX < (racquetH.width + racquetH.racquet1PosX)) {
+        ballH.speedX =- ballH.speedX;
+        ballH.posX = wrap.getBoundingClientRect().left + racquetH.width;
+    }
+
+    ballH.posY -= ballH.speedY;
+    // вылетел ли мяч ниже пола?
+    if (ballH.posY + ballH.height > (wrap.getBoundingClientRect().top + areaH.height)) {
+        ballH.speedY =- ballH.speedY;
+        ballH.posY = wrap.getBoundingClientRect().top + areaH.height - ballH.height;
+    }
+
+    // вылетел ли мяч выше потолка?
+    if (ballH.posY < wrap.getBoundingClientRect().top) {
+        ballH.speedY =- ballH.speedY;
+        ballH.posY = wrap.getBoundingClientRect().top;
+    }
+
+    ballH.update();
+
+    requestAnimationFrame(tick);
+}
 
