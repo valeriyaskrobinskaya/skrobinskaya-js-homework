@@ -1,5 +1,5 @@
 var AjaxHandlerScript = "http://fe.it-academy.by/TestAjax2.php";
-$.ajax('articles/aristotle.html',
+$.ajax('articles/volshebstvo.html',
     {type: 'GET', dataType: 'html', success: function() {
             console.log('success');
         }, error: function() {
@@ -8,7 +8,7 @@ $.ajax('articles/aristotle.html',
 );
 
 var articles = [
-    {title: 'Аристотель', url: 'aristotle'},
+    {title: 'волшебство', url: 'volshebstvo'},
     {title: 'Басов Николай Геннадиевич', url: 'basov'},
     {title: 'Вернадский Владимир Иванович', url: 'vernadsky'},
     {title: 'Галилей Галилео', url: 'galilee'},
