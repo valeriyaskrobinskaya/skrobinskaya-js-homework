@@ -49,3 +49,7 @@ function tLocalStorage(lsKeyName) {
         localStorage.setItem(lsKeyName, JSON.stringify(self.lsHash));
     }
 }
+
+
+
+
