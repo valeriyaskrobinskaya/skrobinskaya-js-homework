@@ -8,26 +8,20 @@ $.ajax('articles/volshebstvo.html',
 );
 
 var articles = [
-    {title: 'волшебство', url: 'volshebstvo'},
-    {title: 'Басов Николай Геннадиевич', url: 'basov'},
-    {title: 'Вернадский Владимир Иванович', url: 'vernadsky'},
-    {title: 'Галилей Галилео', url: 'galilee'},
-    {title: 'Дарвин Чарльз', url: 'darvin'},
-    {title: 'Ковалевская Софья Васильевна', url: 'kovalevskaya'},
-    {title: 'Коперник Николай', url: 'kopernik'},
-    {title: 'Леонардо да Винчи', url: 'leonardo'},
-    {title: 'Ломоносов Михаил Васильевич', url: 'lomonosov'},
-    {title: 'Менделеев Дмитрий Иванович', url: 'mendeleev'},
-    {title: 'Ньютон Иссак', url: 'newton'},
-    {title: 'Павлов Иван Петрович', url: 'pavlov'},
-    {title: 'Планк Макс', url: 'plank'},
-    {title: 'Столетов Александр Григорьевич', url: 'stoletov'},
-    {title: 'Тесла Никола', url: 'tesla'},
-    {title: 'Фарадей Майкл', url: 'faradei'},
-    {title: 'Фрейд Зигмунд', url: 'freud'},
-    {title: 'Циолковский Константин Эдуардович', url: 'tsiolkovsky'},
-    {title: 'Эйлер Леонард', url: 'euler'},
-    {title: 'Эйнштейн Альберт', url: 'einstein'}
+    {title: 'Ave', url: 'ave'},
+    {title: 'Без дверей и без окон', url: 'bezDverey'},
+    {title: 'Волшебство', url: 'volshebstvo'},
+    {title: 'Вселенная', url: 'vselennaya'},
+    {title: 'Вы видели, как умирают киты?', url: 'kity'},
+    {title: 'Дома из соломы', url: 'domaIzSolomy'},
+    {title: 'Мне до тебя', url: 'mneDoTebya'},
+    {title: 'Онко', url: 'onko'},
+    {title: 'Оттепель', url: 'ottepel'},
+    {title: 'По мостовой', url: 'poMostovoy'},
+    {title: 'Прекрасно', url: 'prekrasno'},
+    {title: 'Твои-мои слёзы', url: 'tvoiMoiSlezy'},
+    {title: 'Текст', url: 'text'},
+    {title: 'Тепло', url: 'teplo'}
 ];
 var letters = [];
 
