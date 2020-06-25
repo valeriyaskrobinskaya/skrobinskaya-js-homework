@@ -1,0 +1,47 @@
+body {
+    padding: 0;
+    width: 700px;
+}
+
+.messageGoal {
+    margin: 150px auto 0 auto;
+    width: 150px;
+    font-size: 75px;
+    text-align: center;
+}
+
+#wrapper {
+    margin: 0 auto;
+    border: 1px solid black;
+    background-color: #F0EE7E;
+}
+
+.scoreBoard {
+    margin: 30px auto 30px auto;
+    width: 150px;
+    font-size: 55px;
+    text-align: center;
+}
+
+.racquet1 , .racquet2 {
+    width: 10px;
+    height: 120px;
+    position: absolute;
+}
+
+.racquet1 {
+    background-color: #09AA57;
+}
+
+.racquet2 {
+    background-color: #191497;
+}
+
+.ball {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 15px;
+    background-color: #F02137;
+}
+
